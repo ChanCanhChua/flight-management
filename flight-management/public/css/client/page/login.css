@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:   url('../../../../img/hustlanglogo.jpg')  no-repeat center center/cover;
+    font-family: Arial, sans-serif;
+  }
+
+  .container-login {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+
+
+
+

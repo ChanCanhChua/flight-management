@@ -1,0 +1,145 @@
+@import '../libs/bootstrap/bootstrap.min.css';
+@import "../libs/datatables.min.css";
+@import "../libs/flatpickr.min.css";
+@import "../libs/swiper-bundle.min.css";
+@import "../libs/nice-select2.css";
+@import "../libs/sweetalert2.min.css";
+
+@import "../../fonts/fontawesome-free-6.6.0-web/css/all.min.css";
+:root{
+    --bs-pagination-active-bg: #220646!important;
+    --bs-link-color: #220646!important;
+    --bs-link-hover-color: #220646!important;
+    --bs-pagination-active-border-color: #220646!important;
+}
+.overlay{
+    z-index: 1100;
+    background: rgba(0,0,0,0.6);
+    display: none;
+}
+.active>.page-link, .page-link.active{
+    background-color: #220646!important;
+}
+.main{
+    background-color: rgba(227, 227, 227, 0.82);
+    min-height: 100vh;
+}
+.bg-sidebar{
+    background: #220646;
+}
+.bg-purple{
+    background: rebeccapurple !important;
+}
+.offcanvas-body nav a{
+    color: white;
+}
+.offcanvas-body nav a:hover{
+    color: white;
+}
+.pagination{
+    gap: .5rem !important;
+}
+.pagination .page-item button{
+    display: flex;
+    align-items: center;
+    border-radius:  50% !important;
+    padding-top:50%;
+    padding-bottom:50%;
+    height: 0;
+}
+
+.auth-user{
+    display: flex;
+    
+}
+
+
+.btn-authen {
+    margin: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    margin: 5px;
+    width: 150px;
+    border: none;
+   
+}
+
+
+.btn-authen:hover {
+    
+    border-radius: 4px 0 0 0;
+    background: #605DEC;
+    color: white;
+}
+
+
+
+.modal-body {
+    padding: 20px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  .btn-authen {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .btn-authen:hover {
+    background-color: #0056b3;
+  }
+
+
+  .link-login  {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .link-register{
+    color: white;
+    text-decoration: none;
+  }
+  
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .btn-link {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  
+ 

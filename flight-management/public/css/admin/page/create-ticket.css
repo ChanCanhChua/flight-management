@@ -1,0 +1,27 @@
+tbody td{
+    border-left-width: 1px;
+    border-right-width: 1px;
+
+}
+.dataTable{
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+.dt-scroll{
+    border: 1px solid;
+}
+tr:last-child td{
+    border-bottom: inherit !important;
+    border-bottom-width: 1px !important;
+}
+th{
+    background-color: rebeccapurple !important;
+    color: white !important;
+}
+#destinationAPSelect,#originAPSelect{
+    display: none;
+}
+.nice-select-dropdown{
+    width: 100%;
+}

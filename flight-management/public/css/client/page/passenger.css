@@ -1,0 +1,106 @@
+.flight-list2 {
+    width: 600px;
+     margin: 20px ;
+     background: #fff;
+     border-radius: 10px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     position: sticky;
+     
+     right: 10px;
+     
+ }
+ 
+ .flight2 {
+     display: flex;
+     justify-content: space-between;
+     padding: 15px;
+     border-bottom: 1px solid #eaeaea;
+ }
+ 
+ .flight2:last-child {
+     border-bottom: none;
+ }
+ 
+ .details2 {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .airline2 {
+     font-weight: bold;
+     margin-bottom: 5px;
+ }
+ 
+ .time2, .route2, .stops2, .layover2 {
+     font-size: 0.9em;
+     color: #666;
+ }
+ 
+ .price2 {
+     font-weight: bold;
+     font-size: 1.2em;
+     color: #007bff;
+     align-self: center;
+ }
+
+
+ .text-show{
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.texting{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.contianer-ticket{
+    display: flex;
+}
+
+.show_text__details{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+
+.passenger-info{
+    margin: 30px;
+}
+
+.passenger-information{
+    margin: 30px;
+}
+
+.fill-input{
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+    height: 48px;
+    padding: 10px;
+}
+
+.passenger-gender{
+    margin: 30px;
+    display: flex;
+}
+
+.day-birth{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.passenger-phones{
+    margin: 30px;
+}
+
+.fill-input2{
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+    height: 48px;
+    padding: 10px;
+}
