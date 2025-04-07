@@ -16,28 +16,40 @@
 
 <div class="container-login"> 
 
-<div class="out-login">
-<form  id="loginForm">
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" name="email"   id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="out-login">
+    <!-- Form đăng nhập -->
+    <form method="POST" action="{{ route('login') }}" id="loginForm">
+      @csrf  <!-- CSRF Token để bảo vệ form -->
+      
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+      </div>
+      
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="remember">
+        <label class="form-check-label" for="remember">Remember me</label>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
 
+      <div class="form-group d-flex justify-content-between mt-3">
+        <a href="{{ route('client.pages.home') }}" class="btn btn-secondary">Về trang chủ</a>
+        <a href="{{ route('client.register') }}" class="btn btn-link">Chưa có tài khoản? Đăng ký</a>
+      </div>
 
+    </form>
+
+  </div>
 </div>
 
-  </div>
-</form>
+
 </body>
 </html>

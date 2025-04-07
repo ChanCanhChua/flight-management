@@ -8,6 +8,7 @@ function handleChangeAirport() {
       table.draw();
     }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     originAPSelect = new NiceSelect.bind(document.getElementById("originAPSelect"), {searchable: true});
     destinationAPSelect = new NiceSelect.bind(document.getElementById("destinationAPSelect"), {searchable: true});
@@ -61,19 +62,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             },
             { data: 'flight_time', name: 'flight_time', orderable: true, searchable: false},
-            {data: "id", orderable: false, searchable: false, width: '10%' , render : function ( data, type, row, meta ) {
-                    return type === 'display'  ?
+            // {data: "id", orderable: false, searchable: false, width: '10%' , render : function ( data, type, row, meta ) {
+            //         return type === 'display'  ?
                         
-                            `<button class="btn btn-sm border-secondary" onclick="handleUpdateFlight({
-                                     id: ${data},destination_ap_id: '${row.destination_ap_id}',
-                                     flight_time : '${row.flight_time}',
-                                    origin_ap_id: '${row.origin_ap_id}',
-                                    price: '${row.price}',
-                                    total_seat: '${row.total_seat}', type: 'update'})">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>` :
-                        data;
-                }},
+            //                 `<button class="btn btn-sm border-secondary" onclick="handleUpdateFlight({
+            //                          id: ${data},destination_ap_id: '${row.destination_ap_id}',
+            //                          flight_time : '${row.flight_time}',
+            //                         origin_ap_id: '${row.origin_ap_id}',
+            //                         price: '${row.price}',
+            //                         total_seat: '${row.total_seat}', type: 'update'})">
+            //                     <i class="fa-solid fa-pen-to-square"></i>
+            //                 </button>` :
+            //             data;
+            //     }},
         ],
         deferLoading: true 
     });

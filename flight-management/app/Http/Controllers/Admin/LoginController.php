@@ -5,44 +5,53 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-
+use App\Models\Admin; // Sử dụng model Admin thay vì User
 use App\ResponseTrait;
-class LoginController extends Controller
 
+class LoginController extends Controller
 {
     use ResponseTrait;
+
+    /**
+     * Hiển thị form đăng nhập admin
+     */
     public function showLoginForm()
     {
+        return view('admin.auth.login'); // Đảm bảo có view tương ứng
+    }
+
+    /**
+     * Xử lý đăng nhập admin
+     */
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        // Sử dụng guard('admin') thay vì attempt() thông thường
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('admin.dashboard'));
+        }
+    
+        return back()->withErrors([
+            'email' => 'Thông tin đăng nhập không chính xác',
+        ]);
         
     }
 
-    
-    public function login(Request $request)
-      
+    /**
+     * Đăng xuất admin
+     */
+    public function logout(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
- 
-        if ($user = Auth::attempt($credentials)) {
+        Auth::guard('admin')->logout();
 
-            $request->session()->regenerate();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-            return $this->successResponse($user, 'Đăng nhap thành công!');
- 
-            //return redirect()->intended('dashboard');
-        }
-
-
-        dd($user);
-       
-        return $this->successResponse($user, 'Đăng ký thành công!');
-
-    
+        return redirect()->route('admin.login');
     }
-
 }

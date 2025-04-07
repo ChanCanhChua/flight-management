@@ -1,6 +1,11 @@
 @extends('layout.client')
 @section('content') 
 <div class="container">
+
+<a href="{{ route('client.pages.home') }}" class="btn btn-secondary mb-3">
+    <i class="fa-solid fa-arrow-left"></i> Quay về Trang Chủ
+</a>
+
             
 <form id="flightForm" class="container-searching" action="{{ route('booking.index') }}">
                     <select class="form-select" aria-label="Default select example" name="origin_ap">

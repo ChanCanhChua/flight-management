@@ -22,41 +22,37 @@ class TicketController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $tickets = Ticket::join('flight_time', 'flight_time.id', '=', 'ticket.flight_time_id')
-                ->join('passenger', 'passenger.id', '=', 'ticket.passenger_id')
-                ->select('ticket.*', 
-                    'flight_time.flight_code as flight_code',
-                    'flight_time.flight_time as flight_time',
-                    'passenger.passenger_name as passenger_name',
-                    'passenger.passenger_tel as passenger_tel',
-                    'passenger.passenger_email as passenger_email',
-                )
-                ->orderBy('ticket.created_at', 'desc');
-            return DataTables::of($tickets)
-                ->editColumn('flight_time', function($tickets){
-                    return $tickets->flight_time;
+            $flights = Flight::join('flight_time', 'flight_time.flight_id', '=', 'flights.id')
+                ->join('airports as origin_ap', 'origin_ap.id', '=', 'flights.origin_ap_id')
+                ->join('airports as destination_ap', 'destination_ap.id', '=', 'flights.destination_ap_id')
+                ->select('flights.*', 'flight_time.flight_time as flight_time','origin_ap.name as origin_ap_name','destination_ap.name as destination_ap_name')
+                ->orderBy('flights.created_at', 'desc');
+            if(request()->get('origin_ap_id')){
+                $flights->where('origin_ap.id',request()->get('origin_ap_id'));
+            }
+            if(request()->get('destination_ap_id')){
+                $flights->where('destination_ap.id',request()->get('destination_ap_id'));
+            }
+            return DataTables::of($flights)
+                ->editColumn('origin_ap_name', function($flight){
+                    return $flight->origin_ap_name;
                 })
-                ->editColumn('passenger_name', function($tickets){
-                    return $tickets->passenger_name;
+                ->editColumn('destination_ap_name', function($flight){
+                    return $flight->destination_ap_name;
                 })
-                ->editColumn('passenger_tel', function($tickets){
-                    return $tickets->passenger_tel;
+                ->editColumn('flight_time', function($flight){
+                    return $flight->flight_time;
                 })
-                ->editColumn('passenger_email', function($tickets){
-                    return $tickets->passenger_email;
+                ->filterColumn('origin_ap_name', function ($query, $keyword) {
+                    $query->where('origin_ap.name', 'LIKE', '%' . $keyword . '%');
                 })
-                ->editColumn('flight_date_time', function($tickets){
-                    return $tickets->flight_date.' '.$tickets->flight_time;
-                })->filterColumn('passenger_email', function ($query, $keyword) {
-                    $query->where('passenger.passenger_email', 'LIKE', '%' . $keyword . '%');
-                })
-                ->filterColumn('passenger_name', function ($query, $keyword) {
-                    $query->where('passenger.passenger_name', 'LIKE', '%' . $keyword . '%');
+                ->filterColumn('destination_ap_name', function ($query, $keyword) {
+                    $query->where('destination_ap.name', 'LIKE', '%' . $keyword . '%');
                 })
                 ->make(true);
         }
 
-        return view('admin.pages.ticket',['airports' => Airport::all(), 'pageName' => 'Danh sách đặt vé']);
+        return view('admin.pages.list-flight',['airports' => Airport::all(), 'pageName' => 'Danh sách chuyến bay']);
     }
 
     public function createView(){

@@ -6,7 +6,8 @@ use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->group(function() {
-    Route::group(['middleware' =>Authenticate::class ], function () {
+    // Route::group(['middleware' =>Authenticate::class ], function () {
+
         Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index']);
         Route::prefix('/airport')->group(function() {
             Route::get('/list', [\App\Http\Controllers\Admin\AirportsController::class, 'index']);
@@ -29,11 +30,11 @@ Route::prefix('/admin')->group(function() {
             Route::get('/available-list', [\App\Http\Controllers\Admin\TicketController::class, 'index']);
         });
       
-    });
-    Route::get('/login', [AuthController::class,"loginView"])->name('loginAdmin');
-    Route::post('/do-login', [AuthController::class,"doLogin"]);
-    Route::post('/do-register', [AuthController::class,"doRegister"]);
-    Route::get('/logout', [AuthController::class,"logout"])->name('admin.logout');
-    Route::post('/register', [UserController::class,"addUser"]);
+    // });
+        Route::get('/login', [AuthController::class,"loginView"])->name('loginAdmin');
+        Route::post('/do-login', [AuthController::class,"doLogin"]);
+        Route::post('/do-register', [AuthController::class,"doRegister"]);
+        Route::get('/logout', [AuthController::class,"logout"])->name('admin.logout');
+        Route::post('/register', [UserController::class,"addUser"]);
 
 });

@@ -21,6 +21,7 @@
 
 @push('head')
     <link href="{{ asset('css/admin/page/list-flight.css') }}" rel="stylesheet">
+    <script defer src="{{asset('js/admin/list-flight.js')}}"></script>
     <script defer src="{{asset('js/admin/list-ticket.js')}}"></script>
 @endpush
 

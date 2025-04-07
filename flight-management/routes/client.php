@@ -6,7 +6,6 @@ Route::get('Home', [\App\Http\Controllers\Client\HomeController::class, 'index']
 
 
 
-
 Route::get('/login', [LoginController::class, 'getLogin'])->name('login');
 
 

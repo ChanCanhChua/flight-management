@@ -45,7 +45,7 @@
                 <th class="border-1">Kết thúc</th>
                 <th class="border-1">Giá</th>
                 <th class="border-1">Giờ khởi hành</th>
-                <th class="border-1">Thao tác</th>
+                <!-- <th class="border-1">Thao tác</th> -->
             </tr>
             </thead>
         </table>

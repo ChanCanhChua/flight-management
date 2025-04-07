@@ -3,43 +3,46 @@
 namespace App\Http\Controllers\Client;
 
 use Illuminate\Support\Facades\Auth;
-
-
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Login;
-
 use Illuminate\Http\Request;
-
-
 
 class LoginController extends Controller
 {
     public function getLogin()
     {
         if (Auth::check()) {
-
-            return redirect()->route('clien.pages.Home');
+            return redirect()->route('client.pages.home'); // Đảm bảo route này đã được định nghĩa trong routes/web.php
         } else {
-            
             return view('client.pages.login');
         }
     }
 
-
     public function postLogin(Request $request)
     {
+        // Chỉ cần email và password để xác thực, không cần thêm status
         $login = [
             'email' => $request->email,
             'password' => $request->password,
-            'status' => 1,
         ];
 
         if (Auth::attempt($login)) {
-            // Chuyển hướng đến trang dashboard hoặc bất kỳ trang nào bạn mong muốn
-            return redirect()->route('dashboard')->with('name', Auth::user()->name);
+            // Sau khi đăng nhập thành công, chuyển hướng đến trang home
+            return redirect()->route('client.pages.home')->with('name', Auth::user()->name);
         } else {
-            // Trả về lại trang login với thông báo lỗi
+            // Nếu đăng nhập không thành công, quay lại trang login với thông báo lỗi
             return redirect()->back()->with('status', 'Email hoặc mật khẩu không đúng');
         }
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('client.pages.home');  // Hoặc trang bạn muốn chuyển hướng sau khi đăng xuất
+    }
+
 }
